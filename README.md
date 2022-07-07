@@ -10,7 +10,7 @@
 
 2. There is only one dependancy : https://github.com/FortAwesome/angular-fontawesome . Visit this link and install the relevant version as per your angular verison. You can also take reference from package.json. <br/> *Note: This is only used for left and right arrow icons in the calendar*.
 
-3. Simple import the component by: 
+3. Simply import the component by: 
 ```
 <app-date-picker
 [disabled]="false" // to disable the datepicker
