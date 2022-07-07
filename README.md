@@ -1,11 +1,11 @@
-#### *Description: A completely responsive datepicker utility designed for angular components*.
+### *Description: A completely responsive datepicker utility designed for angular components*.
 
 <p align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/0K05Sy2/Datepicker1.png" alt="Datepicker1" border="0"></a></p>
 
-### Installation:
+#### Installation:
 1. npm install , ng serve.
 
-### Usage:
+#### Usage:
 1. To use this datepicker in your project, simply copy the date-picker.component present in **'src\app\components\dpkr\date-picker\date-picker.component.ts'** and paste it in your relevant module.
 
 2. There is only one dependancy : https://github.com/FortAwesome/angular-fontawesome . Visit this link and install the relevant version as per your angular verison. You can also take reference from package.json. <br/> *Note: This is only used for left and right arrow icons in the calendar*.
