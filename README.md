@@ -1,27 +1,33 @@
-# Datepicker
+#### *Description: A completely responsive datepicker utility designed for angular components*.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+<p align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/0K05Sy2/Datepicker1.png" alt="Datepicker1" border="0"></a></p>
 
-## Development server
+### Installation:
+1. npm install , ng serve.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Usage:
+1. To use this datepicker in your project, simply copy the date-picker.component present in **'src\app\components\dpkr\date-picker\date-picker.component.ts'** and paste it in your relevant module.
 
-## Code scaffolding
+2. There is only one dependancy : https://github.com/FortAwesome/angular-fontawesome . Visit this link and install the relevant version as per your angular verison. You can also take reference from package.json. <br/> *Note: This is only used for left and right arrow icons in the calendar*.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Simple import the component by: 
+```
+<app-date-picker
+[disabled]="false" // to disable the datepicker
+[placeholder]="Select Date" //placeholder value , String format
+[selectedValue]="selectedVal" // Preselect date ,'YYYY-MM-DD' format
+[min]="minDate" // 'YYYY-MM-DD' format
+[max]="maxDate" // 'YYYY-MM-DD' format
+(SelectedDate)="dateSelected($event)" //Functions which emits the Date-object on selection
+></app-date-picker>
+```
+*More Information regarding inputs:-*
+```
+1. [min]: (Non-Mandatory)-String (YYYY-MM-DD) To be used when you have to set a minimum date beyond which no date can be selected.
+2. [max]: (Non-Mandatory)-String (YYYY-MM-DD) To be used when you have to set a maximum date exceeding which no date can be selected.
+3. [placeholder]:(Non-Mandatory)-String Value ,Default Value: 'Select Date'.To be used when you have to provide a particular value to the datepicker placeholder.
+4. [selectedValue]: (Non-Mandatory)-String Value (YYYY-MM-DD) To be used when you have to preselect a date.
+5. [disabled]: (Non-Mandatory)-Boolean Value-(true/false) To be used when you have to disable the datepicker though, you can still use [selectedValue].
+6. (SelectedDate) : (Mandatory)-Function . It basically emits the date-object when a user clicks on a particular date.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
