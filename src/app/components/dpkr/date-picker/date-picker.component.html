@@ -1,0 +1,126 @@
+<div>
+  <div class="set">
+    <div #callyinp class="inputtag">
+      <input
+      [disabled]="this?.disabled"
+        [readonly]="true"
+        placeholder="{{placeholder}}"
+        [value]="displayDate?.toDateString() | date: 'dd/MM/yyyy'"
+        class="calendar-input"
+        type="text"
+      />
+      <div #callyicon class="iconholder">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          fill="currentColor"
+          class="icon bi bi-calendar-event"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
+          />
+          <path
+            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div *ngIf="show" #cally class="calendar" [ngClass]="dropUpOrDown()">
+      <div class="calendarheader">
+        <span (click)="prevArrow()" class="leftIcon">
+          <fa-icon
+            [ngClass]="{ 'fa-disabled': leftIconDisabled }"
+            size="lg"
+            [icon]="faAngleLeft"
+          ></fa-icon>
+        </span>
+
+        <div class="month_year">
+          <select (change)="monthSelected($event)" class="monthpicker">
+            <ng-container *ngFor="let month of months">
+              <option
+                *ngIf="
+                  month.id <= this?.maxDate?.getMonth() ||
+                  this.selectedYear != this?.maxDate?.getFullYear()
+                "
+                [disabled]="
+                  (this.selectedYear == this?.minDate?.getFullYear() &&
+                    month.id < this?.minDate?.getMonth()) ||
+                  (month.id > this?.maxDate?.getMonth() &&
+                    this.selectedYear == this?.maxDate?.getFullYear())
+                "
+                [selected]="this.date.getMonth() == month.id"
+                [value]="month.id"
+              >
+                {{ month.val }}
+              </option>
+            </ng-container>
+            <!-- (this.selectedYear == this?.minDate?.getFullYear() &&
+            month.id < this?.minDate?.getMonth()) ||
+          (month.id > this?.maxDate?.getMonth() &&
+            this.selectedYear == this?.maxDate?.getFullYear()) ||
+          (this.selectedYear >= this.currentDateOrignal.getFullYear() &&
+            month.id > this.currentDateOrignal.getMonth()) -->
+          </select>
+          <select (change)="yearSelected($event)" class="yearpicker">
+            <ng-container *ngFor="let year of years">
+              <option
+                *ngIf="
+                  !(this?.minDate && year.val < this?.minDate?.getFullYear()) &&
+                  !(this?.maxDate && year.val > this?.maxDate?.getFullYear())
+                "
+                [disabled]="
+                  (this?.minDate && year.val < this?.minDate?.getFullYear()) ||
+                  (this?.maxDate && year.val > this?.maxDate?.getFullYear())
+                "
+                [selected]="this.date.getFullYear() == year.val"
+                [value]="year.val"
+              >
+                <span>{{ year.val }}</span>
+              </option>
+            </ng-container>
+          </select>
+        </div>
+
+        <span (click)="nextArrow()" class="rightIcon">
+          <fa-icon
+            [ngClass]="{ 'fa-disabled': rightIconDisabled }"
+            size="lg"
+            [icon]="faAngleRight"
+          ></fa-icon>
+        </span>
+      </div>
+      <div class="weekdays">
+        <div>Su</div>
+        <div>Mo</div>
+        <div>Tu</div>
+        <div>We</div>
+        <div>Th</div>
+        <div>Fr</div>
+        <div>Sa</div>
+      </div>
+      <div class="days">
+        <div
+          (click)="dateClicked(day)"
+          [ngClass]="{
+            'prev-date': day.type == 'prev',
+            'next-date': day.type == 'next',
+            target: day.type == 'target',
+            disabled: day.disabled == true,
+            currentDate:
+              this.currentDateOrignal.getDate() == day.day &&
+              day.type == 'curr' &&
+              this.currentDateOrignal.getFullYear() ==
+                this.date.getFullYear() &&
+              this.currentDateOrignal.getMonth() == this.date.getMonth()
+          }"
+          *ngFor="let day of days"
+        >
+          {{ day.day }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

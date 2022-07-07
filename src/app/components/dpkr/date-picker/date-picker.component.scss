@@ -1,0 +1,220 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parent {
+  position: relative;
+}
+.set {
+  position: relative;
+}
+
+.calendarheader {
+  border-radius: 5px;
+  height: 2rem;
+  color: white;
+  background-color: #0974ad;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d6f1ff;
+  width: 19rem;
+  height: 18rem;
+  padding: 0.5rem;
+  z-index: 999;
+}
+
+.leftIcon {
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.rightIcon {
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.select {
+  font-size: 1rem;
+}
+
+.monthpicker {
+  font-size: 1rem;
+  width: 5.5rem;
+  padding-left: 5px;
+  height: 1.5rem;
+}
+.yearpicker {
+  width: 5.5rem;
+  font-size: 1rem;
+  height: 1.5rem;
+  padding-left: 5px;
+}
+
+.yearpicker,
+.monthpicker:focus {
+  outline: none;
+}
+
+.weekdays {
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.weekdays div {
+  font-size: 1.1rem;
+  width: calc((18rem / 7) - 0.01rem);
+  text-align: center;
+  box-sizing: border-box;
+}
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.days div {
+  box-sizing: border-box;
+  width: calc((18rem / 7) - 0.01rem);
+  text-align: center;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.5;
+}
+
+.days
+  div:hover:not(.today, .next-date, .prev-date, .disabled, .target, .currentDate) {
+  border: 0.1rem solid #777;
+  border-radius: 10%;
+}
+.days div:hover:not(.next-date, .prev-date,.disabled) {
+  cursor: pointer;
+}
+
+.calendar-input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.2rem;
+}
+
+.calendar-input:focus {
+  outline: none;
+}
+
+.inputtag {
+  position: relative !important;
+}
+
+.iconholder {
+  position: absolute;
+  top: 25%;
+  position: absolute;
+  right: 3%;
+  cursor: pointer;
+}
+
+.icon:hover {
+  transition: 0.1s;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.calendar {
+  position: absolute;
+}
+
+.target {
+  background-color: #0974ad;
+  color: white;
+  border-radius: 10%;
+}
+.disabled {
+  opacity: 0.5;
+}
+.fa-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.currentDate {
+  background-color: #9ed6f3;
+  border-radius: 10%;
+}
+
+.dropup {
+  bottom: 2.62rem;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+}
+
+.dropdown {
+  left: 0;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 3%;
+}
+@media (min-width: 320px) and (max-width: 500px) {
+  .calendar {
+    width: 100% !important;
+  }
+
+  .weekdays div {
+    width: calc(100% / 7) !important;
+  }
+
+  .days div {
+    width: calc(100% / 7) !important;
+  }
+
+  .monthpicker {
+    width: 6rem !important;
+    height: 1.7rem;
+    padding-left: 5px;
+  }
+
+  .yearpicker {
+    width: 6rem !important;
+    height: 1.7rem;
+    padding-left: 5px;
+  }
+  .calendarheader {
+    height: 2.5rem !important;
+  }
+
+  .leftIcon {
+    font-size: 1.3rem !important;
+  }
+  .rightIcon {
+    font-size: 1.3rem !important;
+  }
+}
+
+select {
+  color: #000;
+  -webkit-appearance: none;
+  border-radius: 0;
+  -webkit-border-radius: 0px;
+  background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><path fill='%23444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>");
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border: 1px solid rgb(118, 118, 118);
+}

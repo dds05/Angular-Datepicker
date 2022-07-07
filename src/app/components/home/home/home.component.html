@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="themecolor align-center mb-2"><i>Angular Datepicker</i></h1>
+  <div class="d-flex ai-c">
+    <div class="width-40">
+      <app-date-picker
+        [selectedValue]="'2022-02-05'"
+        [min]="minDate"
+        [max]="maxDate"
+        (SelectedDate)="dateSelected($event)"
+      ></app-date-picker>
+    </div>
+  </div>
+</div>
